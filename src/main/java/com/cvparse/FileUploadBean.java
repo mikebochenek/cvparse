@@ -12,6 +12,14 @@ import org.richfaces.event.FileUploadEvent;
 import org.richfaces.model.UploadedFile;
  
 /**
+ * http://showcase.richfaces.org/richfaces/component-sample.jsf?demo=fileUpload
+ * 
+ * FileUpload requires two context-parameter's to be set in web.xml:
+ * createTempFiles boolean attribute which defines whether the uploaded 
+ *   files are stored in temporary files or available in the listener directly as byte[] 
+ *   data (false for this example).
+ * maxRequestSize attribute defines max size in bytes of the uploaded files (1000000 for this example).
+ * 
  * @author Ilya Shaikovsky
  */
 @ManagedBean
