@@ -10,7 +10,9 @@
 	xmlns:a4j="http://richfaces.org/a4j" 
 	xmlns:rich="http://richfaces.org/rich" >
 
-<ui:composition>
+<ui:composition template="/templates/template.xhtml">
+
+    <ui:define name="body">
 
     <h:form>
         <h:panelGrid id="panel" columns="2" columnClasses="ecol1, ecol2">
@@ -57,6 +59,9 @@
             </h:panelGroup>
         </h:panelGrid>
     </h:form>
+
+</ui:define>
+
 </ui:composition>
  
 </html>

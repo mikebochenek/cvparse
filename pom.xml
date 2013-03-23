@@ -33,6 +33,8 @@
             to work with JBoss EAP 6. It requires you have access to the JBoss EAP 6 
             maven repository. -->
         <!-- <jboss.bom.version>1.0.0.Final-redhat-1</jboss.bom.version>> -->
+        
+        <org.richfaces.bom.version>4.0.0.Final</org.richfaces.bom.version>
     </properties>
 
 
@@ -60,11 +62,58 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.richfaces</groupId>
+                <artifactId>richfaces-bom</artifactId>
+                <version>${org.richfaces.bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     
     <dependencies>
-
+        <dependency>
+            <groupId>org.richfaces.ui</groupId>
+            <artifactId>richfaces-components-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.richfaces.core</groupId>
+            <artifactId>richfaces-core-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>el-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+        
         <!-- First declare the APIs we depend on and need for compilation. 
             All of them are provided by JBoss AS 7 -->
 
@@ -124,12 +173,12 @@
         </dependency>
 
         <!-- Import the JSF API, we use provided scope as the API is included 
-            in JBoss AS 7 -->
+            in JBoss AS 7 >
         <dependency>
             <groupId>org.jboss.spec.javax.faces</groupId>
             <artifactId>jboss-jsf-api_2.1_spec</artifactId>
             <scope>provided</scope>
-        </dependency>
+        </dependency -->
 
         <!-- Now we declare any tools needed -->
 
@@ -177,23 +226,9 @@
             <version>1.1.8</version>  
         </dependency>  
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-        </dependency>
+
     
-        <dependency>
-            <groupId>org.richfaces.ui</groupId>
-            <artifactId>richfaces-components-ui</artifactId>
-            <version>4.1.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.richfaces.core</groupId>
-            <artifactId>richfaces-core-impl</artifactId>
-            <version>4.1.0.Final</version>
-        </dependency>
-    
+ 
     </dependencies>
 
     <build>
