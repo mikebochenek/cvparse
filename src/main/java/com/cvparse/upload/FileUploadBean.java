@@ -1,4 +1,4 @@
-package com.cvparse;
+package com.cvparse.upload;
 
 import java.io.IOException;
 import java.io.OutputStream;

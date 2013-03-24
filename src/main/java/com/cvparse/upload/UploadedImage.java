@@ -1,4 +1,4 @@
-package com.cvparse;
+package com.cvparse.upload;
 
 public class UploadedImage {
 
