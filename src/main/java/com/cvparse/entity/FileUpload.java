@@ -62,8 +62,7 @@ public class FileUpload {
 
 	@Override
 	public String toString() {
-		return "FileUpload [id=" + id + ", createDate=" + createDate + ", data="
-				+ (data.length()) + ", owner=" + owner + "]";
+		return "FileUpload [id=" + id + ", createDate=" + createDate + ", owner=" + owner + "]";
 	}
 	
 }

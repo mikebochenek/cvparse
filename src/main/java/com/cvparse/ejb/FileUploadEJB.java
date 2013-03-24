@@ -21,10 +21,20 @@ public class FileUploadEJB {
 	private EntityManager em;
 
     public FileUpload update(FileUpload d) {
-    	logger.finer("calling update... " + d);
+    	logger.info("calling update... " + d);
     	d.setCreateDate(new Date());
     	return em.merge(d);
     }
+    
+    public FileUpload create(byte[] b) {
+    	FileUpload f = new FileUpload();
+    	logger.info("calling create... " + f);
+    	f.setCreateDate(new Date());
+    	f.setDate(new String(b));
+    	return em.merge(f);
+    }
+    
+    
 
     @SuppressWarnings("unchecked")
 	public List<FileUpload> loadAll() {

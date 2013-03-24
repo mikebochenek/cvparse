@@ -5,11 +5,14 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
  
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
  
 import org.richfaces.event.FileUploadEvent;
 import org.richfaces.model.UploadedFile;
+
+import com.cvparse.ejb.FileUploadEJB;
  
 /**
  * http://showcase.richfaces.org/richfaces/component-sample.jsf?demo=fileUpload
@@ -26,6 +29,9 @@ import org.richfaces.model.UploadedFile;
 @SessionScoped
 public class FileUploadBean implements Serializable {
     private ArrayList<UploadedImage> files = new ArrayList<UploadedImage>();
+    
+    @EJB
+    private FileUploadEJB fileUploadEjb;
  
     public void paint(OutputStream stream, Object object) throws IOException {
         stream.write(getFiles().get((Integer) object).getData());
@@ -38,6 +44,10 @@ public class FileUploadBean implements Serializable {
         file.setLength(item.getData().length);
         file.setName(item.getName());
         file.setData(item.getData());
+        
+        // store each and every upload to the database... 
+        fileUploadEjb.create(item.getData());
+        
         files.add(file);
     }
  
