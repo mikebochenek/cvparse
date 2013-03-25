@@ -1,6 +1,7 @@
 package com.cvparse;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +13,8 @@ import javax.faces.bean.RequestScoped;
 import org.apache.pdfbox.io.RandomAccessBuffer;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
+import org.apache.poi.hwpf.HWPFDocument;
+import org.apache.poi.hwpf.extractor.WordExtractor;
 
 import com.cvparse.ejb.FileUploadEJB;
 import com.cvparse.entity.FileUpload;
@@ -41,6 +44,9 @@ public class TextBean {
 		if (fu.getFilename().endsWith(".pdf")) {
 			s = extractPDFText(fu.getData());
 		}
+		if (fu.getFilename().endsWith(".doc")) {
+			s = extractWordText(fu.getData());
+		}
 		
 		logger.info ("extracted text ms: " + (System.currentTimeMillis() - startTS) 
 				+ " from file: " + fu.getFilename() + "  of size: " + fu.getSize());
@@ -58,6 +64,25 @@ public class TextBean {
 		} catch (IOException e) {
 			logger.log(Level.SEVERE, "couldn't get text", e);
 		}
+		return text;
+	}
+
+	
+	private String extractWordText(byte[] wordBytes) {
+		String text = "";
+		ByteArrayInputStream finStream = new ByteArrayInputStream(wordBytes);
+		
+		try {
+			HWPFDocument doc = new HWPFDocument(finStream);
+			WordExtractor wordExtract = new WordExtractor(doc); 
+			String[] dataArray = wordExtract.getParagraphText();
+			for (int i = 0; i < dataArray.length; i++) {
+				text += ("\n–" + dataArray[i]);
+			}
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "couldn't get text", e);
+		}
+		
 		return text;
 	}
 	
