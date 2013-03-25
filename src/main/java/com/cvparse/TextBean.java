@@ -24,10 +24,16 @@ public class TextBean {
     @EJB
     private FileUploadEJB fileUploadEjb;
 	
+    private long id = 0;
+
 	public String getText() {
 		long startTS = System.currentTimeMillis();
 		
-		FileUpload fu = fileUploadEjb.load(4);
+		if (id == 0) return null;
+		
+		FileUpload fu = fileUploadEjb.load(id);
+		
+		if (fu == null) return "could not load id:" + id;
 		
 		logger.finer(fu.getId() + " created on: " + fu.getCreateDate());
 		
@@ -54,4 +60,14 @@ public class TextBean {
 		}
 		return text;
 	}
+	
+    
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 }
