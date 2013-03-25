@@ -23,12 +23,32 @@ public class FileUpload {
 	private Date createDate;
  
 	@Lob
-    private String data;
+    private byte[] data;
     
 	private String owner;
 	
+	private String filename;
 	
-    public Long getId() {
+	private long size;
+	
+	
+    public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	public long getSize() {
+		return size;
+	}
+
+	public void setSize(long size) {
+		this.size = size;
+	}
+
+	public Long getId() {
 		return id;
 	}
     
@@ -44,11 +64,11 @@ public class FileUpload {
 		this.createDate = createDate;
 	}
 
-	public String getData() {
+	public byte[] getData() {
 		return data;
 	}
 
-	public void setDate(String data) {
+	public void setData(byte[] data) {
 		this.data = data;
 	}
 
@@ -62,7 +82,9 @@ public class FileUpload {
 
 	@Override
 	public String toString() {
-		return "FileUpload [id=" + id + ", createDate=" + createDate + ", owner=" + owner + "]";
+		return "FileUpload [id=" + id + ", createDate=" + createDate
+				+ ", owner=" + owner + ", filename=" + filename + ", size="
+				+ size + "]";
 	}
 	
 }

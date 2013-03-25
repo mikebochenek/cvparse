@@ -26,15 +26,19 @@ public class FileUploadEJB {
     	return em.merge(d);
     }
     
-    public FileUpload create(byte[] b) {
+    public FileUpload create(byte[] b, String name) {
     	FileUpload f = new FileUpload();
     	logger.info("calling create... " + f);
     	f.setCreateDate(new Date());
-    	f.setDate(new String(b));
+    	f.setData(b);
+    	f.setFilename(name);
+    	f.setSize(b.length);
     	return em.merge(f);
     }
     
-    
+    public FileUpload load(long id) {
+    	return em.find(FileUpload.class, id);
+    }
 
     @SuppressWarnings("unchecked")
 	public List<FileUpload> loadAll() {

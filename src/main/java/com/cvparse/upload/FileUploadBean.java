@@ -46,7 +46,7 @@ public class FileUploadBean implements Serializable {
         file.setData(item.getData());
         
         // store each and every upload to the database... 
-        fileUploadEjb.create(item.getData());
+        fileUploadEjb.create(item.getData(), item.getName());
         
         files.add(file);
     }
