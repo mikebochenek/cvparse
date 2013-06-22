@@ -13,9 +13,18 @@
 
 			<div class="container">
 
-				<textarea rows="14" cols="60">
-				 improve in all development technologies. 
-				</textarea>
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:outputText value="Name:" />
+						<h:inputTextarea id="name" value="#{codeBean.name}" cols="80" rows="10" />
+						<h:outputText value="Echo:" />
+						<h:outputText id="echo" value="#{codeBean.name}" />
+						<h:outputText value="Count:" />
+						<h:outputText id="countx" value="#{codeBean.count}" />
+					</h:panelGrid>
+					<a4j:commandButton value="Submit" render="echo countx" action="#{codeBean.countAction}"/>
+				</h:form>
+
 			</div>
 
 		</ui:define>
