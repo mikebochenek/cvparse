@@ -8,6 +8,14 @@
 </h:head>
 
 <h:body>
-    <ui:insert name="body">Default content</ui:insert>
+	<ui:insert name="header">
+		<ui:include src="../header.xhtml" />
+	</ui:insert>
+
+	<ui:insert name="body">Default content</ui:insert>
+
+	<ui:insert name="footer">
+		<ui:include src="../footer.xhtml" />
+	</ui:insert>
 </h:body>
 </html>

@@ -3,27 +3,67 @@
     xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j" xmlns:rich="http://richfaces.org/rich">
 
 <body>
-<ui:composition template="/templates/template.xhtml">
+	<ui:composition template="/templates/template.xhtml">
 
-    <ui:define name="title">RichFaces Sample</ui:define>
+		<ui:define name="body">
 
-    <ui:define name="body">
-        <h:form prependId="false">
-			<h:panelGrid columns="1">
-				<rich:panel><f:facet name="header">id from database</f:facet>
-					<rich:inplaceInput inputWidth="10" value="#{textBean.id}" defaultLabel="Double click to edit name" >
-						<a4j:ajax event="change" render="outText" />
-					</rich:inplaceInput>
-				</rich:panel>
-				
-	            <rich:panel>
-		            <f:facet name="header">extracted text</f:facet>
-					<h:outputText value="#{textBean.text}" id="outText"/>
-				</rich:panel>
-			</h:panelGrid>
-			
-        </h:form>
-    </ui:define>
-</ui:composition>
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container">
+						<button type="button" class="btn btn-navbar"
+							data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="brand" href="#">done</a>
+						<div class="nav-collapse collapse">
+							<ul class="nav">
+								<li class="active"><a href="#">Home</a></li>
+								<li><a href="#about">About</a></li>
+								<li><a href="#contact">Contact</a></li>
+							</ul>
+						</div>
+						<!--/.nav-collapse -->
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+
+
+				<div class="row">
+					<div class="span8">
+						<i class="icon-check"></i> walked to the office
+					</div>
+					<div class="span4">today</div>
+				</div>
+				<div class="row">
+					<div class="span8">
+						<i class="icon-check"></i> learned more about bootstrap
+					</div>
+					<div class="span4">today</div>
+				</div>
+				<div class="row">
+					<div class="span8">
+						<i class="icon-check"></i> documented some ideas
+					</div>
+					<div class="span4">today</div>
+				</div>
+
+				<hr />
+
+
+				<p>
+					<i class="icon-search"></i>
+					http://tarruda.github.io/bootstrap-datetimepicker/
+				</p>
+
+
+			</div>
+			<!-- /container -->
+
+
+		</ui:define>
+	</ui:composition>
 </body>
 </html>
