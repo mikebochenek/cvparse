@@ -1,14 +1,44 @@
 package com.cvparse.beans;
 
+import java.io.IOException;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
+import com.cvparse.process.JavaCompileCommand;
 
 @ManagedBean
 @RequestScoped
 public class CodeBean {
 
+	private String name;
+	private Integer count;
+	private String output;
+
+
+	public void countAction() {
+		System.out.println("yes here " + getSessionId());
+		JavaCompileCommand cmd = new JavaCompileCommand();
+		try {
+			output = cmd.compile(getSessionId(), name);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		count = name.length();
+	}
+	
+	private String getSessionId() {
+		FacesContext fCtx = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fCtx.getExternalContext().getSession(false);
+		return session.getId();
+	}
+
+	
 	public String getName() {
-		return name;
+		return name == null ? null : name.replace("\n", "<br />");
 	}
 
 	public void setName(String name) {
@@ -16,8 +46,6 @@ public class CodeBean {
 	}
 
 	public Integer getCount() {
-//		System.out.println("yes we would always be here.. ");
-//		count = name == null ? 0 : name.length();
 		return count;
 	}
 
@@ -25,11 +53,12 @@ public class CodeBean {
 		this.count = count;
 	}
 
-	private String name;
-	private Integer count;
-
-	public void countAction() {
-		System.out.println("yes here " + name.length());
-		count = name.length();
+	public String getOutput() {
+		return output == null ? null : output.replace("\n", "<br />");
 	}
+
+	public void setOutput(String output) {
+		this.output = output;
+	}
+
 }
