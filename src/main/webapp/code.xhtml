@@ -24,7 +24,8 @@
 						<h:outputText value="Output:" />
 						<h:outputText id="output" value="#{codeBean.output}"  escape="false"/>
 					</h:panelGrid>
-					<a4j:commandButton value="Submit" render="echo countx output" action="#{codeBean.countAction}"/>
+					<a4j:commandButton value="Compile" render="echo countx output" action="#{codeBean.countAction}"/>
+					<a4j:commandButton value="Test" render="echo countx output" action="#{codeBean.countAction}"/>
 				</h:form>
 
 			</div>
