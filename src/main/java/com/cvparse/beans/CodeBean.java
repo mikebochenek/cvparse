@@ -13,22 +13,30 @@ import com.cvparse.process.JavaCompileCommand;
 @RequestScoped
 public class CodeBean {
 
-	private String name;
-	private Integer count;
+	private String input;
 	private String output;
+	private Long timer;
 
 
-	public void countAction() {
-		System.out.println("yes here " + getSessionId());
+	public void compileAction() {
+		System.out.println("compileAction --> " + getSessionId());
+		long startTS = System.currentTimeMillis();
 		JavaCompileCommand cmd = new JavaCompileCommand();
 		try {
-			output = cmd.compile(getSessionId(), name);
+			output = cmd.compile(getSessionId(), input);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		count = name.length();
+		timer = System.currentTimeMillis() - startTS;
 	}
+
+	public void testAction() {
+		long startTS = System.currentTimeMillis();
+		System.out.println("testAction --> " + getSessionId());
+		timer = System.currentTimeMillis() - startTS;
+	}
+	
 	
 	private String getSessionId() {
 		FacesContext fCtx = FacesContext.getCurrentInstance();
@@ -36,21 +44,13 @@ public class CodeBean {
 		return session.getId();
 	}
 
-	
-	public String getName() {
-		return name == null ? null : name.replace("\n", "<br />");
+
+	public Long getTimer() {
+		return timer;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getCount() {
-		return count;
-	}
-
-	public void setCount(Integer count) {
-		this.count = count;
+	public void setTimer(Long timer) {
+		this.timer = timer;
 	}
 
 	public String getOutput() {
@@ -59,6 +59,14 @@ public class CodeBean {
 
 	public void setOutput(String output) {
 		this.output = output;
+	}
+
+	public String getInput() {
+		return input;
+	}
+
+	public void setInput(String input) {
+		this.input = input;
 	}
 
 }

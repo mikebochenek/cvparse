@@ -68,6 +68,6 @@ public class JavaCompileCommand {
 			//System.out.println ("Stdout: " + line);
 		}
 		
-		return retVal;
+		return retVal == null ? "compiled successfully" : retVal;
 	}
 }

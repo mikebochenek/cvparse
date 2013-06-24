@@ -11,22 +11,30 @@
 
 		<ui:define name="body">
 
+			<link rel="stylesheet" href="/js/codemirror-3.14/lib/codemirror.css"></link>
+
 			<div class="container">
 
 				<h:form>
-					<h:panelGrid columns="2">
-						<h:outputText value="Name:" />
-						<h:inputTextarea id="name" value="#{codeBean.name}" cols="80" rows="10" />
-						<h:outputText value="Echo:" />
-						<h:outputText id="echo" value="#{codeBean.name}" escape="false" />
-						<h:outputText value="Count:" />
-						<h:outputText id="countx" value="#{codeBean.count}" />
-						<h:outputText value="Output:" />
-						<h:outputText id="output" value="#{codeBean.output}"  escape="false"/>
+					<h:panelGrid columns="1">
+						<h:inputTextarea id="input" value="#{codeBean.input}" cols="80" rows="10" />
+						<h:outputText id="timer" value="#{codeBean.timer}" />
+						<h:outputText id="output" value="#{codeBean.output}" escape="false"/>
 					</h:panelGrid>
-					<a4j:commandButton value="Compile" render="echo countx output" action="#{codeBean.countAction}"/>
-					<a4j:commandButton value="Test" render="echo countx output" action="#{codeBean.countAction}"/>
+					<a4j:commandButton value="Compile" render="timer output" action="#{codeBean.compileAction}"/>
+					<a4j:commandButton value="Test" render="output output" action="#{codeBean.testAction}"/>
 				</h:form>
+
+
+				<script src="/js/codemirror-3.14/lib/codemirror.js"></script>
+				<script src="/js/codemirror-3.14/mode/javascript/javascript.js"></script>
+
+				<script type="text/javascript">
+					//var myCodeMirror = CodeMirror.fromTextArea(document.getElementsByTagName('textarea')[0], {
+					//	linenumbers : true,
+					//	autofocus : true
+					//});
+				</script>
 
 			</div>
 
