@@ -62,6 +62,14 @@ public class CodeBean {
 	}
 
 	public String getInput() {
+		if (input == null) { //TODO remove test data...
+			input = "public class Test { \n"
+					+ "  public static void main(String[] args) { \n"
+					+ "    System.out.println(\"Hello, World\"); \n"
+					+ "  }\n"
+					+ "}";
+		}
+		
 		return input;
 	}
 
