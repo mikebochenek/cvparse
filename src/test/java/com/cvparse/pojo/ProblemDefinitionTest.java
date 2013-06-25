@@ -8,19 +8,25 @@ public class ProblemDefinitionTest {
 
 	@Test
 	public void test() {
+		ProblemDefinition def = createFactorialDef();
+	}
+
+	public ProblemDefinition createFactorialDef() {
 		ProblemDefinition def = new ProblemDefinition();
 		
 		Function f = new Function();
 		f.setName("Factorial");
 		Variable ret = new Variable();
-		ret.setType(VariableType.INTEGER);
+		ret.setType(VariableType.INT);
 		f.setReturnValue(ret);
 		
 		Variable param = new Variable();
-		param.setType(VariableType.INTEGER);
+		param.setType(VariableType.INT);
+		param.setName("x");
 		f.addParameter(param);
 		
 		def.setTestFunction(f);
+		return def;
 	}
 
 }
