@@ -10,23 +10,31 @@
 	<ui:composition template="/templates/template.xhtml">
 
 		<ui:define name="body">
-
-			<link rel="stylesheet" href="/js/codemirror-3.14/lib/codemirror.css"></link>
+		
+			<style type="text/css" media="screen">
+			    #editor { 
+			        position: absolute;
+			        top: 0;
+			        right: 0;
+			        bottom: 0;
+			        left: 0;
+			    }
+			</style>
 
 			<div class="container">
 
-				<textarea id="myeditor"></textarea>
+			<div id="editor">function foo(items) {
+			    var x = "All this is syntax highlighted";
+			    return x;
+			}</div>
 				
-				<script src="/js/codemirror-3.14/lib/codemirror.js"></script>
-				<script src="/js/codemirror-3.14/mode/javascript/javascript.js"></script>
-
-				<script type="text/javascript">
-					var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('myeditor'), {
-						linenumbers : true,						
-						autofocus : true
-					});
-				</script>
-
+			<script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+			<script>
+			    var editor = ace.edit("editor");
+			    editor.setTheme("ace/theme/monokai");
+			    editor.getSession().setMode("ace/mode/javascript");
+			</script>
+			
 			</div>
 
 		</ui:define>
