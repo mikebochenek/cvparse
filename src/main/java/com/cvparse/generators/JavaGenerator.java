@@ -19,7 +19,8 @@ public class JavaGenerator implements CodeGenerator {
 			first = false;
 		}
 		
-		code += ") {\n\n";
+		code += ") {\n";
+		code += "    return int;"; //TODO 
 		code += "  }\n";
 				
 		code += "}";		
