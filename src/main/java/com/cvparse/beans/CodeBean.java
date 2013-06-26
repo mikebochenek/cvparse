@@ -2,6 +2,7 @@ package com.cvparse.beans;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -16,7 +17,6 @@ public class CodeBean {
 	private String input;
 	private String output;
 	private Long timer;
-
 
 	public void compileAction() {
 		System.out.println("compileAction --> " + getSessionId());
