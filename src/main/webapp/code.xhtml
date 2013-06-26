@@ -11,30 +11,40 @@
 
 		<ui:define name="body">
 
-			<link rel="stylesheet" href="/js/codemirror-3.14/lib/codemirror.css"></link>
+			<style type="text/css" media="screen">
+			    .ace_editor {
+			        position: relative !important;
+			        border: 1px solid lightgray;
+			        margin: auto;
+			        height: 500px;
+			        width: 90%;
+			    }
+			</style>
 
 			<div class="container">
 
+				<div id="editor"></div>
+
 				<h:form>
 					<h:panelGrid columns="1">
-						<h:inputTextarea id="input" value="#{codeBean.input}" cols="80" rows="10" />
+						<h:inputHidden id="input" value="#{codeBean.input}" cols="80"  />
 						<h:outputText id="timer" value="#{codeBean.timer}" />
 						<h:outputText id="output" value="#{codeBean.output}" escape="false"/>
 					</h:panelGrid>
 					<a4j:commandButton value="Compile" render="timer output" action="#{codeBean.compileAction}"/>
-					<a4j:commandButton value="Test" render="output output" action="#{codeBean.testAction}"/>
+					<a4j:commandButton value="Test" render="timer output" action="#{codeBean.testAction}"/>
 				</h:form>
 
+			<script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+			<script>
+			    var editor = ace.edit("editor");
+			    editor.setTheme("ace/theme/eclipse");
+			    editor.getSession().setMode("ace/mode/java");
+			    editor.getSession().on('change', function(e) {
+			    	jQuery("td input").val(editor.getValue());
+			    });
+			</script>
 
-				<script src="/js/codemirror-3.14/lib/codemirror.js"></script>
-				<script src="/js/codemirror-3.14/mode/javascript/javascript.js"></script>
-
-				<script type="text/javascript">
-					//var myCodeMirror = CodeMirror.fromTextArea(document.getElementsByTagName('textarea')[0], {
-					//	linenumbers : true,
-					//	autofocus : true
-					//});
-				</script>
 
 			</div>
 
