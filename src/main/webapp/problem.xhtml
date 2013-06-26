@@ -13,9 +13,9 @@
 
 			<div class="container">
 			
-				<div><h:outputText value="#{problemBean.id}" /> courtesy of: http://codingdojo.org/cgi-bin/wiki.pl?KataRomanNumerals</div>
+				<div><h:outputText value="#{problemBean.id}" /> #{msg.courtesy} #{problemBean.url}</div>
 
-				<iframe src="http://codingdojo.org/cgi-bin/wiki.pl?KataRomanNumerals" width="90%" height="500">
+				<iframe src="#{problemBean.url}" width="90%" height="500">
 					<p>Your browser does not support iframes.</p>
 				</iframe>
 			</div>

@@ -17,4 +17,10 @@ public class ProblemBean {
 		this.id = id;
 	}
 	
+	public String getUrl() {
+		return "http://en.wikipedia.org/wiki/Fibonacci_number";
+		//http://en.wikipedia.org/wiki/Fibonacci_number
+		//http://codingdojo.org/cgi-bin/wiki.pl?KataRomanNumerals
+	}
+	
 }
