@@ -28,7 +28,7 @@
 				<h:form>
 					<h:panelGrid columns="1">
 						<h:inputHidden id="input" value="#{codeBean.input}" cols="80"  />
-						<h:outputText id="timer" value="#{codeBean.timer}" />
+						<h:outputText id="timer" value="compile in #{codeBean.timer}ms" />
 						<h:outputText id="output" value="#{codeBean.output}" escape="false"/>
 					</h:panelGrid>
 					<a4j:commandButton value="Compile" render="timer output" action="#{codeBean.compileAction}"/>
