@@ -14,7 +14,9 @@ public class HeaderBean implements Serializable {
 	private final String active = "active";
 	
 	public String getHomeClass() {
-		return getRequestURL().indexOf("index.jsf") == -1 ? "" : active;
+		//return getRequestURL().indexOf("index.jsf") == -1 ? "" : active;
+		return "".equals(getProblemClass()) && "".equals(getSolutionClass()) 
+				&& "".equals(getResourcesClass()) ? active : "";
 	}
 	public String getProblemClass() {
 		return getRequestURL().indexOf("problem.jsf") == -1 ? "" : active;
