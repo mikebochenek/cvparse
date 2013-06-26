@@ -12,27 +12,28 @@
 		<ui:define name="body">
 		
 			<style type="text/css" media="screen">
-			    #editor { 
-			        position: absolute;
-			        top: 0;
-			        right: 0;
-			        bottom: 0;
-			        left: 0;
+			    .ace_editor {
+			        position: relative !important;
+			        border: 1px solid lightgray;
+			        margin: auto;
+			        height: 500px;
+			        width: 60%;
 			    }
 			</style>
 
 			<div class="container">
 
-			<div id="editor">function foo(items) {
-			    var x = "All this is syntax highlighted";
-			    return x;
-			}</div>
+			<div id="editor">public class Test {
+    public static void main(String[] args) {
+        System.out.println("Hello, World");
+    }
+}</div>
 				
 			<script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 			<script>
 			    var editor = ace.edit("editor");
-			    editor.setTheme("ace/theme/monokai");
-			    editor.getSession().setMode("ace/mode/javascript");
+			    editor.setTheme("ace/theme/eclipse");
+			    editor.getSession().setMode("ace/mode/java");
 			</script>
 			
 			</div>
