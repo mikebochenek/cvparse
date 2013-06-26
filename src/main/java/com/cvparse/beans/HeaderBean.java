@@ -25,7 +25,7 @@ public class HeaderBean implements Serializable {
 		return getRequestURL().indexOf("code.jsf") == -1 ? "" : active;
 	}
 	public String getResourcesClass() {
-		return getRequestURL().indexOf("about.jsf") == -1 ? "" : active;
+		return getRequestURL().indexOf("header.jsf") == -1 ? "" : active;
 	}
 	
 	private String getRequestURL() {

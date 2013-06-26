@@ -23,8 +23,6 @@
 
 			<div class="container">
 
-				<div id="editor"></div>
-
 				<h:form>
 					<h:panelGrid columns="1">
 						<h:inputHidden id="input" value="#{codeBean.input}" cols="80"  />
@@ -34,6 +32,9 @@
 					<a4j:commandButton value="Compile" render="timer output" action="#{codeBean.compileAction}"/>
 					<a4j:commandButton value="Test" render="timer output" action="#{codeBean.testAction}"/>
 				</h:form>
+
+				<div id="editor"></div>
+
 
 			<script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 			<script>
