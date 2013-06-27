@@ -1,6 +1,8 @@
 package com.cvparse.beans;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,12 +28,12 @@ public class CodeBean {
 	private String timer;
 
 	public void compileAction() {
-		System.out.println("compileAction --> " + getSessionId());
+		System.out.println("compileAction --> " + getUUID());
 		long startTS = System.currentTimeMillis();
 		JavaCompileCommand cmd = new JavaCompileCommand();
 		try {
 			String name = "Test"; //TODO change to problem.getName
-			output = cmd.compile(getSessionId(), name, input);
+			output = cmd.compile(getUUID(), name, input);
 		} catch (IOException e) {
 			logger.log(Level.SEVERE, "could not compile ", e);
 		}
@@ -49,6 +51,12 @@ public class CodeBean {
 		FacesContext fCtx = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fCtx.getExternalContext().getSession(false);
 		return session.getId();
+	}
+	
+	private String getUUID() {
+		String session = getSessionId();
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		return sdf.format(new Date()) + "-" + session.replaceAll(".undefined", "");
 	}
 
 
