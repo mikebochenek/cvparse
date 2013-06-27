@@ -1,13 +1,16 @@
 package com.cvparse.beans;
 
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import com.cvparse.ejb.ProblemSourceCodeEJB;
 import com.cvparse.process.JavaCompileCommand;
 
 @ManagedBean
@@ -15,6 +18,9 @@ import com.cvparse.process.JavaCompileCommand;
 public class CodeBean {
 	private Logger logger = Logger.getLogger(this.getClass().getName());
 
+	@EJB
+	private ProblemSourceCodeEJB problemSourceCodeEjb;
+	
 	private String input;
 	private String output;
 	private Long timer;
@@ -27,8 +33,7 @@ public class CodeBean {
 			String name = "Test"; //TODO change to problem.getName
 			output = cmd.compile(getSessionId(), name, input);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE, "could not compile ", e);
 		}
 		timer = System.currentTimeMillis() - startTS;
 	}
@@ -65,11 +70,7 @@ public class CodeBean {
 
 	public String getInput() {
 		if (input == null) { //TODO remove test data...
-			input = "public class Test { \n"
-					+ "  public int fibonacci(int f) { \n"
-					+ "    System.out.println(\"Hello, World\"); \n"
-					+ "  }\n"
-					+ "}";
+			input = problemSourceCodeEjb.load(1).getBoilerplate();
 		}
 		
 		return input;
