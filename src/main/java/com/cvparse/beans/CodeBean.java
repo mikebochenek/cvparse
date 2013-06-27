@@ -23,7 +23,7 @@ public class CodeBean {
 	
 	private String input;
 	private String output;
-	private Long timer;
+	private String timer;
 
 	public void compileAction() {
 		System.out.println("compileAction --> " + getSessionId());
@@ -35,13 +35,13 @@ public class CodeBean {
 		} catch (IOException e) {
 			logger.log(Level.SEVERE, "could not compile ", e);
 		}
-		timer = System.currentTimeMillis() - startTS;
+		timer = ""+ (System.currentTimeMillis() - startTS);
 	}
 
 	public void testAction() {
 		long startTS = System.currentTimeMillis();
 		System.out.println("testAction --> " + getSessionId());
-		timer = System.currentTimeMillis() - startTS;
+		timer = ""+ (System.currentTimeMillis() - startTS);
 	}
 	
 	
@@ -52,11 +52,11 @@ public class CodeBean {
 	}
 
 
-	public Long getTimer() {
+	public String getTimer() {
 		return timer;
 	}
 
-	public void setTimer(Long timer) {
+	public void setTimer(String timer) {
 		this.timer = timer;
 	}
 

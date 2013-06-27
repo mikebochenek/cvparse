@@ -23,17 +23,14 @@
 
 			<div class="container">
 
-			<div id="editor">public class Test {
-    public static void main(String[] args) {
-        System.out.println("Hello, World");
-    }
-}</div>
+			<div id="editor">#{resourcesBean.testCode}</div>
 				
 			<script src="/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
 			<script>
 			    var editor = ace.edit("editor");
 			    editor.setTheme("ace/theme/eclipse");
 			    editor.getSession().setMode("ace/mode/java");
+			    editor.getSession().setReadOnly(true);  // false to make it editable
 			</script>
 			
 			</div>

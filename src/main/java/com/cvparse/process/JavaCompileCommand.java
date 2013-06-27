@@ -26,6 +26,8 @@ public class JavaCompileCommand {
 		executeCompile(dir, name, s);
 		executeCompile(dir, name, testCode); //TODO, this should be one command...
 		return null;
+		
+		//TODO like this?  http://www.vogella.com/articles/JUnit/article.html
 	}
 
 	private void createdir(String dir) {
