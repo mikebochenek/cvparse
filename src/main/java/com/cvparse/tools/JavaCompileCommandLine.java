@@ -16,7 +16,7 @@ public class JavaCompileCommandLine {
 		try {
 			String out1 = ctd.createDirectory("j90320930932");
 
-			String output = jc.compile("test332", code);
+			String output = jc.compile("test332", "Test", code);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

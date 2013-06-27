@@ -8,13 +8,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class JavaCompileCommand {
+	private Logger logger = Logger.getLogger(this.getClass().getName());
 
-	public String compile(String dir, String s) throws IOException {
+	public String compile(String dir, String name, String s) throws IOException {
 		createdir(dir);
-		write(dir, s);
-		return executeCompile(dir, s);
+		write(dir, name, s);
+		return executeCompile(dir, name, s);
+	}
+	
+	public String compileAndTest(String dir, String name, String s, String testCode) throws IOException {
+		createdir(dir);
+		write(dir, name, s);
+		executeCompile(dir, name, s);
+		executeCompile(dir, name, testCode); //TODO, this should be one command...
+		return null;
 	}
 
 	private void createdir(String dir) {
@@ -24,12 +35,12 @@ public class JavaCompileCommand {
 		}
 	}
 	
-	private void write(String dir, String content) {
+	private void write(String dir, String name, String content) {
+		String path = "/tmp/" + dir + "/" + name +".java";
 		try {
-			File file = new File("/tmp/" + dir + "/Test.java");
+			File file = new File(path);
 			
-			// if file doesn't exists, then create it
-			if (!file.exists()) {
+			if (!file.exists()) { // if file doesn't exists, then create it
 				file.createNewFile();
 			}
 
@@ -39,23 +50,15 @@ public class JavaCompileCommand {
 			bw.close();
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, "could not write " + path, e);
 		}
 	}
 		
-	private String executeCompile(String dir, String s) throws IOException {
-		ProcessBuilder pb = new ProcessBuilder("javac", "/tmp/" + dir + "/Test.java");
-		Map<String, String> env = pb.environment();
-		//env.put("VAR1", "myValue");
-		//env.remove("OTHERVAR");
-		//env.put("VAR2", env.get("VAR1") + "suffix");
+	private String executeCompile(String dir, String name, String s) throws IOException {
+		ProcessBuilder pb = new ProcessBuilder("javac", "/tmp/" + dir + "/" + name + ".java");
 		pb.directory(new File("/tmp/" + dir));
-		File log = new File("log");
 		pb.redirectErrorStream(true);
-		//pb.redirectOutput(log);
 		Process p = pb.start();
-		//assert pb.redirectInput() == Redirect.PIPE;
-		//assert pb.redirectOutput().file() == log;
 		assert p.getInputStream().read() == -1;
 
 		InputStream stdout = p.getInputStream ();
@@ -65,7 +68,6 @@ public class JavaCompileCommand {
 		String line = "";
 		while ((line = reader.readLine ()) != null) {
 			retVal += ("".equals(retVal) ? "" : "\n") + line;
-			//System.out.println ("Stdout: " + line);
 		}
 		
 		return "".equals(retVal) ? "compiled successfully" : retVal;

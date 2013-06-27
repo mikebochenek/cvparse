@@ -1,6 +1,7 @@
 package com.cvparse.beans;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -12,6 +13,7 @@ import com.cvparse.process.JavaCompileCommand;
 @ManagedBean
 @RequestScoped
 public class CodeBean {
+	private Logger logger = Logger.getLogger(this.getClass().getName());
 
 	private String input;
 	private String output;
@@ -22,7 +24,8 @@ public class CodeBean {
 		long startTS = System.currentTimeMillis();
 		JavaCompileCommand cmd = new JavaCompileCommand();
 		try {
-			output = cmd.compile(getSessionId(), input);
+			String name = "Test"; //TODO change to problem.getName
+			output = cmd.compile(getSessionId(), name, input);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
