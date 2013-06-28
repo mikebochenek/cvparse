@@ -1,10 +1,12 @@
 package com.cvparse.ejb;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.cvparse.entity.ProblemSourceCode;
 
@@ -18,5 +20,12 @@ public class ProblemSourceCodeEJB {
 	
 	public ProblemSourceCode load(long id) {
 		return em.find(ProblemSourceCode.class, id);
+	}
+	
+	public List<ProblemSourceCode> findByProblemId(long id) {
+		// http://www.mkyong.com/hibernate/hibernate-query-examples-hql/
+		Query query = em.createQuery("from ProblemSourceCode where problemId = :problemId");
+		query.setParameter(0, id);
+		return query.getResultList();
 	}
 }

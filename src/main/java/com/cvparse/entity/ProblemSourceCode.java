@@ -25,6 +25,16 @@ public class ProblemSourceCode {
     private String testcode;
     
     private String owner;
+    
+    private Long problemId;
+
+	public Long getProblemId() {
+		return problemId;
+	}
+
+	public void setProblemId(Long problemId) {
+		this.problemId = problemId;
+	}
 
 	public Long getId() {
 		return id;
