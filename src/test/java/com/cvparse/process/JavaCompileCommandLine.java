@@ -1,8 +1,9 @@
-package com.cvparse.tools;
+package com.cvparse.process;
 
 import java.io.IOException;
 
 import com.cvparse.process.JavaCompileCommand;
+import com.cvparse.tools.UnusedDirectoryOperationCommand;
 
 public class JavaCompileCommandLine {
 
