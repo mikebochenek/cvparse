@@ -26,6 +26,7 @@ public class ProblemDefinitionTest {
 		f.addParameter(param);
 		
 		def.setTestFunction(f);
+		assertNotNull(def);
 		return def;
 	}
 

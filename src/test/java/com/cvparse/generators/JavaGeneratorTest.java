@@ -16,12 +16,7 @@ public class JavaGeneratorTest {
 		
 		JavaGenerator jg = new JavaGenerator();
 		String code = jg.generate(def);
-		System.out.println(code);
+		//System.out.println(code);
+		assertTrue(code.contains("factorial"));
 	}
-
-	@Test
-	public void testGenerateTests() {
-		//fail("Not yet implemented");
-	}
-
 }
