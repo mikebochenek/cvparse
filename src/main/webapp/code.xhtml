@@ -31,6 +31,10 @@
 					</h:panelGrid>
 					<a4j:commandButton value="Compile" render="timer output" action="#{codeBean.compileAction}"/>
 					<a4j:commandButton value="Test" render="timer output" action="#{codeBean.testAction}"/>
+
+					<h:selectOneMenu value="#{codeBean.currentLang}" rendered="#{not empty codeBean.langList}">
+						<f:selectItems value="#{codeBean.langList}" />
+					</h:selectOneMenu>
 				</h:form>
 
 				<div id="editor">#{codeBean.input}</div>

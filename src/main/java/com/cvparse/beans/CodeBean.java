@@ -2,7 +2,9 @@ package com.cvparse.beans;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,6 +13,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import javax.faces.model.SelectItem;
 
 import com.cvparse.ejb.ProblemSourceCodeEJB;
 import com.cvparse.process.JavaCompileCommand;
@@ -26,6 +30,8 @@ public class CodeBean {
 	private String input;
 	private String output;
 	private String timer;
+	private String currentLang;
+	private List<SelectItem> langList = new ArrayList<SelectItem>();
 
 	public void compileAction() {
 		System.out.println("compileAction --> " + getUUID());
@@ -74,6 +80,22 @@ public class CodeBean {
 
 	public void setOutput(String output) {
 		this.output = output;
+	}
+
+	public String getCurrentLang() {
+		return currentLang;
+	}
+
+	public void setCurrentLang(String currentLang) {
+		this.currentLang = currentLang;
+	}
+
+	public List<SelectItem> getLangList() {
+		return langList;
+	}
+
+	public void setLangList(List<SelectItem> langList) {
+		this.langList = langList;
 	}
 
 	public String getInput() {
