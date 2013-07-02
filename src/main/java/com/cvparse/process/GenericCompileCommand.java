@@ -12,16 +12,18 @@ import java.util.logging.Logger;
 
 public class GenericCompileCommand {
 	private Logger logger = Logger.getLogger(this.getClass().getName());
+	private static final String tmpDirectory = "/tmp/";
+	public static final String SUCCESS = "compiled successfully";
 
 	protected void createdir(String dir) {
-		File dirFile = new File("/tmp/" + dir);
+		File dirFile = new File(tmpDirectory + dir);
 		if (!dirFile.exists()) {
 			dirFile.mkdir();
 		}
 	}
 	
 	protected void write(String dir, String name, String content, String extension) {
-		String path = "/tmp/" + dir + "/" + name + "." + extension;
+		String path = tmpDirectory + dir + "/" + name + "." + extension;
 		try {
 			File file = new File(path);
 			
@@ -41,7 +43,7 @@ public class GenericCompileCommand {
 		
 	protected String executeCompile(String dir, String command, String params) throws IOException {
 		ProcessBuilder pb = new ProcessBuilder(command, params);
-		pb.directory(new File("/tmp/" + dir));
+		pb.directory(new File(tmpDirectory + dir));
 		pb.redirectErrorStream(true);
 		Process p = pb.start();
 		assert p.getInputStream().read() == -1;
@@ -52,9 +54,22 @@ public class GenericCompileCommand {
 		String retVal = "";
 		String line = "";
 		while ((line = reader.readLine ()) != null) {
+			logger.info(line);
 			retVal += ("".equals(retVal) ? "" : "\n") + line;
 		}
 		
-		return "".equals(retVal) ? "compiled successfully" : retVal;
+		return "".equals(retVal) ? SUCCESS : retVal;
 	}
+	
+	public void changeDirectory(String s) throws IOException {
+		ProcessBuilder pb = new ProcessBuilder("cd", tmpDirectory + s);
+		Process p = pb.start();
+	}	
+
+	public void removeDirectory(String s) throws IOException {
+		ProcessBuilder pb = new ProcessBuilder("rm", "-rf", tmpDirectory + s);
+		pb.directory(new File(tmpDirectory));
+		Process p = pb.start();
+	}	
+
 }

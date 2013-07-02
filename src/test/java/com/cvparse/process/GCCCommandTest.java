@@ -11,8 +11,8 @@ public class GCCCommandTest {
 	@Test
 	public void testCompile() throws IOException {
 		GCCCommand c = new GCCCommand();
-		String out = c.compile("tst"+System.currentTimeMillis(), "test", code);
-		assertNotNull(out);
+		String out = c.compile("c_"+System.currentTimeMillis(), "test", code);
+		assertEquals(c.SUCCESS, out);
 	}
 
 	@Test

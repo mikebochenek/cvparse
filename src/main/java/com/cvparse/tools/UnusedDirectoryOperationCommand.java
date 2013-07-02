@@ -28,16 +28,4 @@ public class UnusedDirectoryOperationCommand {
 		
 		return null;
 	}	
-	
-	public void changeDirectory(String s) throws IOException {
-		ProcessBuilder pb = new ProcessBuilder("cd", tmpDirectory + s);
-		Process p = pb.start();
-	}	
-
-	public void removeDirectory(String s) throws IOException {
-		ProcessBuilder pb = new ProcessBuilder("rm", "-rf", tmpDirectory + s);
-		pb.directory(new File(tmpDirectory));
-		Process p = pb.start();
-	}	
-
 }

@@ -2,22 +2,21 @@ package com.cvparse.process;
 
 import java.io.IOException;
 
+import org.junit.Test;
+
 import com.cvparse.process.JavaCompileCommand;
 import com.cvparse.tools.UnusedDirectoryOperationCommand;
 
 public class JavaCompileCommandLine {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	@Test
+	public void main() {
 		UnusedDirectoryOperationCommand ctd = new UnusedDirectoryOperationCommand();
 		
 		JavaCompileCommand jc = new JavaCompileCommand();
 		try {
-			String out1 = ctd.createDirectory("j90320930932");
-
-			String output = jc.compile("test332", "Test", code);
+			ctd.createDirectory("j90320930932");
+			jc.compile("test332", "Test", code);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
