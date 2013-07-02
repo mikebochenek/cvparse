@@ -13,7 +13,7 @@ public class JavaCompileCommandTest {
 	@Test
 	public void main() throws IOException {
 		JavaCompileCommand jc = new JavaCompileCommand();
-		String actual = jc.compile("test332", "Test", code);
+		String actual = jc.compile("java_"+System.currentTimeMillis(), "Test", code);
 		assertEquals(jc.SUCCESS, actual);
 	}
 

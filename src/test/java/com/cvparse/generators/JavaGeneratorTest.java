@@ -16,7 +16,6 @@ public class JavaGeneratorTest {
 		
 		JavaGenerator jg = new JavaGenerator();
 		String code = jg.generate(def);
-		//System.out.println(code);
 		assertTrue(code.contains("factorial"));
 	}
 }
