@@ -91,6 +91,9 @@ public class CodeBean {
 	}
 
 	public List<SelectItem> getLangList() {
+		if (langList == null || langList.size() == 0) { //TODO remove test data...
+			langList.add(new SelectItem(problemSourceCodeEjb.load(1).getLanguage().toString()));
+		}
 		return langList;
 	}
 
