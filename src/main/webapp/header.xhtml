@@ -21,7 +21,6 @@
 		<!--  from http://twitter.github.io/bootstrap/examples/justified-nav.html -->
 	<style type="text/css">
       body {
-        padding-top: 20px;
         padding-bottom: 60px;
       }
 
@@ -33,7 +32,6 @@
       .container > hr {
         margin: 60px 0;
       }
-
 
       /* Customize the navbar links to be fill the entire space of the .navbar */
       .navbar .navbar-inner {
@@ -67,24 +65,22 @@
 
     <div class="container">
 			<form class="bs-docs-example form-inline">
-				<div class="bfh-selectbox bfh-countries" data-country="US"
-					data-countryList="US,DE,FR" data-flags="true">
-					<input type="hidden" value=""></input> <a
-						class="bfh-selectbox-toggle" role="button"
-						data-toggle="bfh-selectbox" href="#"> <span
-						class="bfh-selectbox-option input-medium" data-option=""></span> <b
-						class="caret"></b>
-					</a>
-					<div class="bfh-selectbox-options">
-						<input type="text" class="bfh-selectbox-filter"></input>
-						<div role="listbox">
-							<ul role="option">
-							</ul>
-						</div>
-					</div>
+				<div class="row">
+				<div class="span2 offset10 bfh-selectbox bfh-languages" data-language="en_US" 
+					data-available="en_US,es_ES,fr_FR,de_DE,it_IT,pl_PL,pt_PT,ru_RU,ja_JP,zh_CN,hi_IN,ar_ZA,tr_TR" data-flags="true">
+  					<input type="hidden" value=""></input>
+ 						<a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+							<span class="bfh-selectbox-option input-medium" data-option=""></span>
+ 							<b class="caret"></b>
+						</a>
+  					<div class="bfh-selectbox-options">
+  						<div role="listbox">
+						    <ul role="option"></ul>
+					  </div>
+  				</div>
 				</div>
+				</div>			
 			</form>
-
 			<div class="masthead">
 			<div class="navbar">
 				<div class="navbar-inner">
