@@ -31,14 +31,14 @@
 						<div class="well sidebar-nav">
 							<ul class="nav nav-list">
 								<li class="nav-header">Home</li>
-								<li><a href="/index.jsf">Welcome</a></li>
-								<li class="active"><a href="/admin/listproblems.jsf">Welcome</a></li>
-								<li><a href="/signin.jsf">Sign in</a></li>
+								<li class="#{homeBean.welcomeClass}"><a href="/index.jsf">Welcome</a></li>
+								<li class="#{homeBean.signinClass}"><a href="/signin.jsf">Sign in</a></li>
+								<li class="#{homeBean.adminClass}"><a href="/admin/listproblems.jsf">Admin</a></li>
 								<li class="nav-header">Company</li>
-								<li><a href="/about.jsf">About</a></li>
-								<li><a href="/jobs.jsf">Jobs</a></li>
-								<li><a href="/partners.jsf">Partners</a></li>
-								<li><a href="/contact.jsf">Contact</a></li>
+								<li class="#{homeBean.aboutClass}"><a href="/about.jsf">About</a></li>
+								<li class="#{homeBean.jobsClass}"><a href="/jobs.jsf">Jobs</a></li>
+								<li class="#{homeBean.partnersClass}"><a href="/partners.jsf">Partners</a></li>
+								<li class="#{homeBean.contactClass}"><a href="/contact.jsf">Contact</a></li>
 								<li><a href="http://www.google.com">Blog</a></li>
 							</ul>
 						</div>
