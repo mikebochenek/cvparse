@@ -1,5 +1,6 @@
 package com.cvparse.ejb;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
@@ -17,5 +18,10 @@ public class ProblemEJB {
 
 	public Problem load(long id) {
 		return em.find(Problem.class, id);
+	}
+	
+    @SuppressWarnings("unchecked")
+	public List<Problem> loadAll() {
+		return em.createQuery("select p from Problem p ").getResultList();
 	}
 }

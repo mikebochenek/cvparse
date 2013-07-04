@@ -6,44 +6,48 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich">
 
-	<ui:composition template="../index.xhtml">
+<ui:composition template="../index.xhtml">
 
-<ui:define name="innerbody">
+	<ui:define name="innerbody">
 
-			<table class="table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Name</th>
-						<th>Languages</th>
-						<th>Username</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
-					</tr>
-				</tbody>
-			</table>
+		<h:dataTable styleClass="table"
+			value="#{listProblemsBean.problemList}" var="pr">
 
-</ui:define>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="id" />
+				</f:facet>
+				<h:outputText value="#{pr.id}" />
+			</h:column>
 
-	</ui:composition>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="name" />
+				</f:facet>
+				<h:outputText value="#{pr.name}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="created" />
+				</f:facet>
+				<h:outputText value="#{pr.createDate}">
+					<f:convertDateTime type="date" pattern="dd-MM-yyyy" />
+				</h:outputText>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="action" />
+				</f:facet>
+				<h:outputText value="edit" />
+			</h:column>
+
+		</h:dataTable>
+
+	</ui:define>
+
+</ui:composition>
 
 </html>
 
