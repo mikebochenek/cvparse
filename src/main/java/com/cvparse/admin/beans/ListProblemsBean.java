@@ -1,6 +1,5 @@
 package com.cvparse.admin.beans;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -21,8 +20,6 @@ public class ListProblemsBean {
 	
 
 	public List<Problem> getProblemList() {
-		List<Problem> list = new ArrayList<Problem>();
-		list.add(problemEjb.load(1));
 		return problemEjb.loadAll();
 	}
 }

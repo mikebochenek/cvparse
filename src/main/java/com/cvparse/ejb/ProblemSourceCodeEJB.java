@@ -22,6 +22,7 @@ public class ProblemSourceCodeEJB {
 		return em.find(ProblemSourceCode.class, id);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<ProblemSourceCode> findByProblemId(long id) {
 		// http://www.mkyong.com/hibernate/hibernate-query-examples-hql/
 		Query query = em.createQuery("from ProblemSourceCode where problemId = :problemId");

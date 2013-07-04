@@ -48,7 +48,7 @@ public class CodeBean {
 
 	public void testAction() {
 		long startTS = System.currentTimeMillis();
-		System.out.println("testAction --> " + getSessionId());
+		logger.info("testAction --> " + getSessionId());
 		timer = ""+ (System.currentTimeMillis() - startTS);
 	}
 	

@@ -83,4 +83,12 @@ public class ProblemSourceCode {
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
+
+	@Override
+	public String toString() {
+		return "ProblemSourceCode [id=" + id + ", createDate=" + createDate
+				+ ", language=" + language + ", boilerplate=" + boilerplate
+				+ ", testcode=" + testcode + ", owner=" + owner
+				+ ", problemId=" + problemId + "]";
+	}
 }

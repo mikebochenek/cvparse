@@ -16,7 +16,6 @@ public class JavaCompileCommand extends GenericCompileCommand {
 		createdir(dir);
 		write(dir, name, s, "java");
 		executeCompile(dir, "javac", "/tmp/" + dir + "/" + name + ".java");
-		//executeCompile("javac", "/tmp/" + dir + "/" + name + ".java"); //TODO, this should be one command...
 		return null;
 		
 		//TODO like this?  http://www.vogella.com/articles/JUnit/article.html

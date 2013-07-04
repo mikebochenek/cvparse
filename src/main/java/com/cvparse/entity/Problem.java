@@ -75,4 +75,11 @@ public class Problem {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "Problem [id=" + id + ", createDate=" + createDate
+				+ ", problemStatement=" + problemStatement + ", owner=" + owner
+				+ ", name=" + name + ", problemXML=" + problemXML + "]";
+	}
 }

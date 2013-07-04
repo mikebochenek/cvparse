@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean
 @RequestScoped
-public class HeaderBean implements Serializable {
+public class HeaderBean {
 
 	private final String active = "active";
 	
 	public String getHomeClass() {
-		//return getRequestURL().indexOf("index.jsf") == -1 ? "" : active;
 		return "".equals(getProblemClass()) && "".equals(getSolutionClass()) 
 				&& "".equals(getResourcesClass()) ? active : "";
 	}
