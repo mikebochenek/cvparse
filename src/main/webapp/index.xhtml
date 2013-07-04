@@ -24,29 +24,31 @@
         }
       }
     </style>
-    
+
 			<div class="container-fluid">
 				<div class="row-fluid">
 					<div class="span2">
 						<div class="well sidebar-nav">
 							<ul class="nav nav-list">
 								<li class="nav-header">Home</li>
-								<li class="active"><a href="admin/listproblems.jsf">Welcome</a></li>
-								<li><a href="#">Sign in</a></li>
+								<li><a href="/index.jsf">Welcome</a></li>
+								<li class="active"><a href="/admin/listproblems.jsf">Welcome</a></li>
+								<li><a href="/signin.jsf">Sign in</a></li>
 								<li class="nav-header">Company</li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Jobs</a></li>
-								<li><a href="#">Partners</a></li>
-								<li><a href="#">Contact</a></li>
-								<li><a href="#">Blog</a></li>
+								<li><a href="/about.jsf">About</a></li>
+								<li><a href="/jobs.jsf">Jobs</a></li>
+								<li><a href="/partners.jsf">Partners</a></li>
+								<li><a href="/contact.jsf">Contact</a></li>
+								<li><a href="http://www.google.com">Blog</a></li>
 							</ul>
-						</div><!--/.well -->
-					</div><!--/span-->
-						
-						          <div class="span8">
-						          
-						          <ui:include src="admin/listproblems.xhtml" />
-          </div>
+						</div>
+						<!--/.well -->
+					</div>
+					<!--/span-->
+
+					<div class="span8">
+						<ui:insert name="innerbody"><img src="/img/duel.jpg"></img></ui:insert>
+					</div>
 				</div>
 			</div>
 
