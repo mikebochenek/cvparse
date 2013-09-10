@@ -16,8 +16,8 @@ public class UnusedDirectoryOperationCommand {
 		pb.redirectErrorStream(true);
 		Process p = pb.start();
 
-		InputStream stdout = p.getInputStream ();
-		BufferedReader reader = new BufferedReader (new InputStreamReader(stdout));
+		//InputStream stdout = p.getInputStream ();
+		//BufferedReader reader = new BufferedReader (new InputStreamReader(stdout));
 		
 		/* we should have better error handling, but then again, we are doing mkdir only...
 		String retVal = "";
